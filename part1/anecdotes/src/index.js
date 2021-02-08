@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Header = ({ title }) => <div><h1>{title}</h1></div>
+
 const Voting = (props) => {
   return (
     <div>
@@ -25,6 +26,7 @@ const moddedArr = (array, number) => {
 }
 
 const randNumb = () => Math.round(Math.random() * 5)
+
 const App = (props) => {
   const headers = {
     title1: 'Anecdote of the day',
