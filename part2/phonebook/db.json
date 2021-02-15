@@ -1,0 +1,24 @@
+{
+  "persons":[
+    { 
+      "fullName": "Arto Hellas", 
+      "teleNumber": "040-123456",
+      "id": 1
+    },
+    { 
+      "fullName": "Ada Lovelace", 
+      "teleNumber": "39-44-5323523",
+      "id": 2
+    },
+    { 
+      "fullName": "Dan Abramov", 
+      "teleNumber": "12-43-234345",
+      "id": 3
+    },
+    { 
+      "fullName": "Mary Poppendieck", 
+      "teleNumber": "39-23-6423122",
+      "id": 4
+    }
+  ]
+}
