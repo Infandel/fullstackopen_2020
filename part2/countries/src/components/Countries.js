@@ -2,15 +2,18 @@ import React from 'react'
 import Country from './Country'
 
 
-const Countries = ({ countries, searchName, handleSearchName }) => {
-  const countriesToShow = searchName
+const Countries = ({ countries, weather, searchName, handleSearchName, fetchCapitalsCoords }) => {
+  console.log(weather)
+    const countriesToShow = searchName
     ? countries.filter(country => country.name.toLowerCase().includes(searchName.toLowerCase()))
     : countries
-  if (countriesToShow.length === 1) {    
+  if (countriesToShow.length === 1) {
+    // Using this command to fetch selected country capital's coordinates
+    fetchCapitalsCoords(countriesToShow[0].latlng)  
     return (
       <div>
         {countriesToShow.map((country) =>
-          <Country key={country.numericCode} country={country} />
+          <Country key={country.numericCode} country={country} weather={weather} />
         )}
       </div>
     )

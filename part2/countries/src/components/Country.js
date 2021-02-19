@@ -1,7 +1,8 @@
 import React from 'react'
+import SpokenLanguages from './SpokenLanguages'
 
 
-const Country = ({ country }) => {
+const Country = ({ country, weather }) => {
   return (
     <div>
         <h2>{country.name}</h2>
@@ -11,7 +12,7 @@ const Country = ({ country }) => {
             <div>
                 Population: {country.population}
             </div>
-            <h3>Languages</h3>
+            <h3>Spoken Languages</h3>
                 <ul>
                     {country.languages.map(country =>
                         <SpokenLanguages key={country.name} country={country} />
@@ -19,17 +20,16 @@ const Country = ({ country }) => {
                 </ul>
             <div>
                 <img src={country.flag} height={150} />
-            </div>     
+            </div>
+            <h3>Weather in {country.capital}</h3>
+                <div>
+                    <strong>temperature:</strong> {weather.temp2m} Celsius
+                </div>
+                <div>
+                    <strong>wind:</strong> {weather.wind10m.speed} m/s direction {weather.wind10m.direction}
+                </div>               
     </div>
   )
-}
-
-const SpokenLanguages = ({ country }) => {
-    return (
-        <li>
-            {country.name} 
-        </li>
-    )
 }
 
 
