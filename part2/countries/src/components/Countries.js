@@ -3,7 +3,6 @@ import Country from './Country'
 
 
 const Countries = ({ countries, weather, searchName, handleSearchName, fetchCapitalsCoords }) => {
-  console.log(weather)
     const countriesToShow = searchName
     ? countries.filter(country => country.name.toLowerCase().includes(searchName.toLowerCase()))
     : countries
@@ -18,6 +17,7 @@ const Countries = ({ countries, weather, searchName, handleSearchName, fetchCapi
       </div>
     )
   }
+  //Getting the list of countries with clickable button for collapsing
   else if (countriesToShow.length <= 10) {
     return (
       countriesToShow.map(country =>

@@ -9,8 +9,8 @@ const App = () => {
   const [ searchName, setSearchName ] = useState('')
   const [ weather, setWeather ] = useState({temp2mp: 5, wind10m: {direction: "SE", speed: 2}})
   const [ capitalsCoordinates, setCapitalsCoordinates ] = useState([64, 26])
-  
-  //For getting all the countries  
+
+  //Effect For getting all the countries list  
   useEffect(() => {
     axios
       .get('https://restcountries.eu/rest/v2/all')
@@ -18,7 +18,8 @@ const App = () => {
         setCountries(response.data)
       })
   }, [])
-  //For getting chosen country's capital weather statement
+
+  //Effect For getting chosen country's capital weather statement
   useEffect(() => {
     axios
       .get(`http://www.7timer.info/bin/api.pl?lon=${capitalsCoordinates[1]}&lat=${capitalsCoordinates[0]}&product=civil&output=json`)
@@ -27,10 +28,12 @@ const App = () => {
       })
   }, [capitalsCoordinates])
   
+  //Handler for filtering purposes
   const handleSearchName = (event) => {
     setSearchName(event.target.value)
   }
   
+  //Function for handling current coordinates from site
   const fetchCapitalsCoords = (coords) => setCapitalsCoordinates(coords)
 
   return (
