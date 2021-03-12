@@ -1,27 +1,23 @@
 import React from 'react'
+import Person from './Person'
 
 
-
-const Persons = ({ persons, searchName }) => {
-    const personsToShow = searchName
-      ? persons.filter(person => person.fullName.toLowerCase().includes(searchName.toLowerCase()))
-      : persons
-    return (
-      <div>
-        {personsToShow.map((person) =>
-          <Person key={person.id} person={person} />
-        )}
-      </div>
-    )
+const Persons = ({ persons, searchName, removePerson }) => {
+  const personsToShow = searchName
+    ? persons.filter(person => person.fullName.toLowerCase().includes(searchName.toLowerCase()))
+    : persons
+  return (
+    <div>
+      {personsToShow.map((person) =>
+          <Person 
+          key={person.id} 
+          person={person}
+          deletePerson={() => removePerson(person.id, person.fullName)}
+          />
+      )}
+    </div>
+  )
 }
 
-
-const Person = ({ person }) => {
-    return (
-      <div>
-        {person.fullName} {person.teleNumber}
-      </div>
-    )
-}
 
 export default Persons
