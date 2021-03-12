@@ -14,8 +14,8 @@ const App = () => {
   useEffect(() => {
     personService
       .getAll()
-      .then(initialNotes => {
-        setPersons(initialNotes)
+      .then(initialPersons => {
+        setPersons(initialPersons)
       })
   }, [])
 
@@ -26,16 +26,27 @@ const App = () => {
       teleNumber: newNumber,
     }
     
-    personService
+    if (persons.filter(name => name.fullName === newName).length > 0) {
+      const chosenPerson = persons.find(p => p.fullName === newName)
+      const changedPerson = {...chosenPerson, teleNumber: newNumber}
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) { 
+        return (
+          personService
+            .update(chosenPerson.id, changedPerson)
+            .then(returnedPerson => {
+              setPersons(persons.map(person => person.id !== chosenPerson.id ? person : returnedPerson))
+            })
+        )
+      }
+    }
+    else {
+      personService
       .create(nameObject)
-      .then(returnedNote => {
-        setPersons(persons.concat(returnedNote))
+      .then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson))
         setNewName('')
         setNewNumber('')        
-    })
-
-    if (persons.filter(name => name.fullName === newName).length > 0) {
-      return window.alert(`${newName} is already added to phonebook`)
+        })
     }
   }
 
@@ -85,6 +96,7 @@ const App = () => {
     </div>
   )
 }
+
 
 export default App
 
