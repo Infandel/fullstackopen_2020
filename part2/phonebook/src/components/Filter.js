@@ -4,7 +4,7 @@ import React from 'react'
 const Filter = ({ searchName, handleSearchName }) => {
   return (
     <div>
-      name: <input 
+      filter shown with: <input 
       value={searchName}
       onChange={handleSearchName} />
     </div>

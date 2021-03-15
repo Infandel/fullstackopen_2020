@@ -3,10 +3,10 @@ import React from 'react'
 
 const Person = ({ person, deletePerson }) => {
   return (
-    <div>
+    <li className='person'>
       {person.fullName} {person.teleNumber} 
       <button onClick={deletePerson}>delete</button> 
-    </div>
+    </li>
   )
 }
 

@@ -7,15 +7,15 @@ const Persons = ({ persons, searchName, removePerson }) => {
     ? persons.filter(person => person.fullName.toLowerCase().includes(searchName.toLowerCase()))
     : persons
   return (
-    <div>
+    <ul>
       {personsToShow.map((person) =>
-          <Person 
-          key={person.id} 
-          person={person}
-          deletePerson={() => removePerson(person.id, person.fullName)}
-          />
+        <Person 
+        key={person.id} 
+        person={person}
+        deletePerson={() => removePerson(person.id, person.fullName)}
+        />
       )}
-    </div>
+    </ul>
   )
 }
 
