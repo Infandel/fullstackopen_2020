@@ -34,7 +34,6 @@ const App = () => {
     if (persons.filter(name => name.name === newName).length > 0) {
       const chosenPerson = persons.find(p => p.name === newName)
       const changedPerson = {...chosenPerson, number: newNumber}
-      console.log(changedPerson, chosenPerson)
       if (window.confirm(`${newName} is already added to the phonebook, replace the old number with a new one?`)) { 
         personService
           .update(chosenPerson.id, changedPerson)
