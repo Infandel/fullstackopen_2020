@@ -4,7 +4,7 @@ import React from 'react'
 const Person = ({ person, deletePerson }) => {
   return (
     <li className='person'>
-      {person.fullName} {person.teleNumber} 
+      {person.name} {person.number} 
       <button onClick={deletePerson}>delete</button> 
     </li>
   )

@@ -4,7 +4,7 @@ import Person from './Person'
 
 const Persons = ({ persons, searchName, removePerson }) => {
   const personsToShow = searchName
-    ? persons.filter(person => person.fullName.toLowerCase().includes(searchName.toLowerCase()))
+    ? persons.filter(person => person.name.toLowerCase().includes(searchName.toLowerCase()))
     : persons
   return (
     <ul>
@@ -12,7 +12,7 @@ const Persons = ({ persons, searchName, removePerson }) => {
         <Person 
         key={person.id} 
         person={person}
-        deletePerson={() => removePerson(person.id, person.fullName)}
+        deletePerson={() => removePerson(person.id, person.name)}
         />
       )}
     </ul>

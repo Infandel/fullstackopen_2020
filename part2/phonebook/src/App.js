@@ -27,14 +27,14 @@ const App = () => {
   const addName = (event) => {
     event.preventDefault()
     const nameObject = {
-      fullName: newName,
-      teleNumber: newNumber,
+      name: newName,
+      number: newNumber,
     }
     
-    if (persons.filter(name => name.fullName === newName).length > 0) {
-      const chosenPerson = persons.find(p => p.fullName === newName)
-      const changedPerson = {...chosenPerson, teleNumber: newNumber}
-
+    if (persons.filter(name => name.name === newName).length > 0) {
+      const chosenPerson = persons.find(p => p.name === newName)
+      const changedPerson = {...chosenPerson, number: newNumber}
+      console.log(changedPerson, chosenPerson)
       if (window.confirm(`${newName} is already added to the phonebook, replace the old number with a new one?`)) { 
         personService
           .update(chosenPerson.id, changedPerson)
@@ -75,8 +75,8 @@ const App = () => {
     }
   }
 
-  const removePerson = (id, fullName) => {
-    if (window.confirm(`Delete ${fullName} ?`)) {  
+  const removePerson = (id, name) => {
+    if (window.confirm(`Delete ${name} ?`)) {  
       personService
         .deletion(id)
         .then(
